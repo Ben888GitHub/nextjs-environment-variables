@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 
-export default function Home({ secret, nextSecret }) {
+export default function Home({ secret, nextSecret, thirdValue }) {
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -15,6 +15,7 @@ export default function Home({ secret, nextSecret }) {
 				<h1 className={styles.title}>NextJs Environment Variables</h1>
 				<h2>.ENV Value: {secret}</h2>
 				<h2>.ENV Value of Next Public: {nextSecret}</h2>
+				<h2>Third Value: {thirdValue}</h2>
 			</main>
 		</div>
 	);
@@ -24,7 +25,8 @@ export const getStaticProps = () => {
 	return {
 		props: {
 			secret: process.env.NAME,
-			nextSecret: process.env.NEXT_PUBLIC_VALUE
+			nextSecret: process.env.NEXT_PUBLIC_VALUE,
+			thirdValue: process.env.THIRD_VALUE
 		}
 	};
 };
